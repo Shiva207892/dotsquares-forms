@@ -1,0 +1,10 @@
+#chart {
+    margin-top: 20px;
+}
+.wrapper {
+    --rows: 40;
+    --p: 4px;
+    max-height: calc(5lh + (var(--rows) * var(--p) * 2));
+    overflow: auto;
+    border: 1px solid;
+  }

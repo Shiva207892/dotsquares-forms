@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import StepForm from './components/step_form';
+import SummaryTable from './components/summary_table';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            flex: 1,
+            border: '1px solid',
+            borderRadius: '5px',
+            maxWidth: '100%',
+            maxHeight: '100%',
+          }}>
+           <StepForm/>
+          </div>
     </div>
   );
 }
