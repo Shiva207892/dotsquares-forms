@@ -105,9 +105,11 @@ const EducationStep = ({ data, onChange, setValidation }) => {
       )}
         </div>
       ))}
-      <button className="btn-add" onClick={handleAddEducation}>
+     <div className="btn-row">
+     <button className="btn-add" onClick={handleAddEducation}>
         Add Education
       </button>
+     </div>
     </div>
   );
 };

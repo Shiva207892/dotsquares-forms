@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from "react";
 import "../App.css";
 
 const SkillsStep = ({ data, onChange, setValidation }) => {
@@ -6,12 +6,12 @@ const SkillsStep = ({ data, onChange, setValidation }) => {
 
   const validateStep = useCallback(() => {
     // Skills validation logic
-    const isValid = data.every(skill => skill.toString().trim() !== ''); // Check if every skill is non-empty
+    const isValid = data.every((skill) => skill.toString().trim() !== ""); // Check if every skill is non-empty
 
-    if(JSON.stringify(data) != '[]') {
-    console.log(isValid, '  Skill Validation: ' + JSON.stringify(data));
-    setValid(isValid);
-    setValidation(isValid);
+    if (JSON.stringify(data) != "[]") {
+      console.log(isValid, "  Skill Validation: " + JSON.stringify(data));
+      setValid(isValid);
+      setValidation(isValid);
     }
   }, [data]);
 
@@ -22,7 +22,7 @@ const SkillsStep = ({ data, onChange, setValidation }) => {
   const handleAddSkill = () => {
     onChange((prevData) => ({
       ...prevData,
-      skills: [...prevData.skills, ''],
+      skills: [...prevData.skills, ""],
     }));
   };
 
@@ -45,25 +45,36 @@ const SkillsStep = ({ data, onChange, setValidation }) => {
   };
 
   return (
-    <div className='step-inner-container'>
+    <div className="step-inner-container">
       {data.map((skill, index) => (
-         <div>
-        <div className='row-skill' key={index}>
-         <input
-            className='text-input-skill'
-            type="text"
-            placeholder='Type skill Name...'
-            value={skill}
-            onChange={(e) => handleSkillChange(index, e.target.value)}
-          />
-          <button className='btn-remove-skill' onClick={() => handleRemoveSkill(index)}>Remove</button>
-        </div>
-        {!valid && <p style={{ color: 'black' }}>* Please fill in all the required fields for each skill entry.</p>}
+        <div>
+          <div className="row-skill" key={index}>
+            <input
+              className="text-input-skill"
+              type="text"
+              placeholder="Type skill Name..."
+              value={skill}
+              onChange={(e) => handleSkillChange(index, e.target.value)}
+            />
+            <button
+              className="btn-remove-skill"
+              onClick={() => handleRemoveSkill(index)}
+            >
+              Remove
+            </button>
+          </div>
+          {!valid && (
+            <p style={{ color: "black" }}>
+              * Please fill in all the required fields for each skill entry.
+            </p>
+          )}
         </div>
       ))}
-      <button
-      className='btn-add'
-      onClick={handleAddSkill}>Add Skill</button>
+      <div className="btn-row">
+        <button className="btn-add" onClick={handleAddSkill}>
+          Add Skill
+        </button>
+      </div>
     </div>
   );
 };

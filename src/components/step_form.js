@@ -194,7 +194,7 @@ const StepForm = () => {
       <h2>Existing Forms</h2>
 
       <div
-        className="step-outer-container"
+        className="table-outer-container"
       >
         <SummaryTable refreshTable={refreshTable} />
       </div>
