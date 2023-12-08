@@ -28,12 +28,12 @@ const BasicInfoStep = ({ data, onChange, setValidation }) => {
       return fieldIsValid;
     });
 
-    console.log(
-      isValid,
-      "  Basic Information Validation: " + JSON.stringify(data)
-    );
-
-    setValidation(isValid);
+      console.log(
+        isValid,
+        "  Basic Information Validation: " + JSON.stringify(data)
+      );
+  
+      setValidation(isValid);
   }, [data]);
 
   useEffect(() => {
