@@ -47,8 +47,9 @@ const SkillsStep = ({ data, onChange, setValidation }) => {
   return (
     <div className='step-inner-container'>
       {data.map((skill, index) => (
+         <div>
         <div className='row-skill' key={index}>
-          <input
+         <input
             className='text-input-skill'
             type="text"
             placeholder='Type skill Name...'
@@ -57,11 +58,12 @@ const SkillsStep = ({ data, onChange, setValidation }) => {
           />
           <button className='btn-remove-skill' onClick={() => handleRemoveSkill(index)}>Remove</button>
         </div>
+        {!valid && <p style={{ color: 'black' }}>* Please fill in all the required fields for each skill entry.</p>}
+        </div>
       ))}
       <button
       className='btn-add'
       onClick={handleAddSkill}>Add Skill</button>
-      {valid ? null : <p style={{ color: 'black' }}>* Please fill in all the required fields for each skill entry.</p>}
     </div>
   );
 };

@@ -8,16 +8,16 @@ const EducationStep = ({ data, onChange, setValidation }) => {
     // Education validation logic
     const isValid = data.every((edu) => {
       if (edu.course && edu.universityName && edu.yearOfCompletion) {
-        // Ensure it's a valid year between 1000 and 2023
+        // Ensure it's a valid year between 1900 and 2024
         const yearValue = parseInt(edu.yearOfCompletion, 10);
-        if (isNaN(yearValue) || yearValue < 1000 || yearValue > 2023) {
+        if (isNaN(yearValue) || yearValue < 1900 || yearValue > 2024) {
           return false;
         }
         return true;
       }
     });
 
-    if(JSON.stringify(data) != '[]') {
+    if (JSON.stringify(data) != "[]") {
       console.log(isValid, "  Education Validation: " + JSON.stringify(data));
       setValid(isValid);
       setValidation(isValid);
@@ -57,7 +57,7 @@ const EducationStep = ({ data, onChange, setValidation }) => {
   };
 
   return (
-    <div  className="step-inner-container">
+    <div className="step-inner-container">
       {data.map((edu, index) => (
         <div key={index}>
           <input
@@ -78,31 +78,36 @@ const EducationStep = ({ data, onChange, setValidation }) => {
               handleEducationChange(index, "universityName", e.target.value)
             }
           />
-        <div className='row-skill' key={index}>
-          <input 
-            className="text-input-skill"
-            type="number"
-  placeholder="Completion Year..."
-  value={edu.yearOfCompletion}
-  onChange={(e) =>
-    handleEducationChange(index, "yearOfCompletion", e.target.value)
-  }
-  min="1900"
-  max="2023"
-  maxLength={4}
-          />
-          <button className='btn-remove-skill'
-          onClick={() => handleRemoveEducation(index)}>Remove</button>
+          <div className="row-skill" key={index}>
+            <input
+              className="text-input-skill"
+              type="number"
+              placeholder="Completion Year..."
+              value={edu.yearOfCompletion}
+              onChange={(e) =>
+                handleEducationChange(index, "yearOfCompletion", e.target.value)
+              }
+              min="1900"
+              max="2024"
+              maxLength={4}
+            />
+            <button
+              className="btn-remove-skill"
+              onClick={() => handleRemoveEducation(index)}
+            >
+              Remove
+            </button>
           </div>
-        </div>
-      ))}
-      <button className="btn-add"
-      onClick={handleAddEducation}>Add Education</button>
-      {valid ? null : (
+          {!valid && (
         <p style={{ color: "black" }}>
-          * Please fill in all the required fields for each education entry.
+          * Please fill in all the required fields for each education entry and year of completion must be in range (1900-2023).
         </p>
       )}
+        </div>
+      ))}
+      <button className="btn-add" onClick={handleAddEducation}>
+        Add Education
+      </button>
     </div>
   );
 };
